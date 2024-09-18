@@ -36,11 +36,25 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('pages.about');
+        $about = DB::table('about_us')
+            ->where('status', 1)
+            ->first();
+
+        $whyChooseUs = DB::table('why_choose_us')
+            ->where('status', 1)
+            ->get();
+
+        // dd($whyChooseUs);
+
+
+        return view('pages.about', compact('about', 'whyChooseUs'));
     }
-    public function service()
+    public function serviceDetail($slug)
     {
-        return view('pages.service');
+        $service = DB::table('services')
+            ->where('slug', $slug)
+            ->first();
+        return view('pages.service', compact('service'));
     }
     public function contact()
     {

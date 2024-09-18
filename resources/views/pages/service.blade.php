@@ -4,11 +4,11 @@
         data-black-overlay="4">
         <div class="container">
             <div class="tm-breadcrumb text-center">
-                <h2>Service Details</h2>
+                <h2>{{ $service->title }}</h2>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="service.html">Services</a></li>
-                    <li>Sports Rehabilitation</li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li>Services</li>
+                    <li>{{ $service->title }}</li>
                 </ul>
             </div>
         </div>
@@ -19,28 +19,15 @@
                 <div class="row">
                     <div class="col-lg-6 col-12">
                         <div class="tm-service-details sticky-sidebar">
-                            <img class="tm-service-details-image" src="assets/images/others/service-details.jpg"
-                                alt="service details image" />
+                            <img class="tm-service-details-image" src="{{ getImage('services', $service->featured_image) }}"
+                                alt="{{ $service->title }}" />
 
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">
                         <div class="tm-service-details">
-                            <h2>Sports Rehabilitation</h2>
-                            <p>
-                                Delectus voluptatem fugiat doloremque ab in. Assumenda eos
-                                temporibus quia temporibus expedita numquam ut velit
-                                repellendus. Totam aperiam eum aut ea consequatur. Totam
-                                iure ab in ea possimus mollitia aperiam. Qui corporis
-                                officiis accusantium eveniet fugiat neque necessitatibus.
-                                Ipsum dolores fugit facere et labore et officia magnam sint.
-                            </p>
-                            <p>
-                                Placeat et assumenda omnis fugit aut quaerat modi qui. Qui
-                                et sequi. Sequi minima velit sapiente corporis dolor hic.
-                                Deleniti atque voluptas non mollitia sed illo hic magni.
-                            </p>
-
+                            <h2>{{ $service->title }}</h2>
+                            {!! $service->description !!}
                         </div>
                     </div>
                 </div>

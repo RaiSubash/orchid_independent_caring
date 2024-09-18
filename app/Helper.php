@@ -13,3 +13,9 @@ function siteSetting()
 {
     return DB::table('site_setting')->first();
 }
+
+function services()
+{
+    return DB::table('services')->where('status', 1)
+        ->get();
+}

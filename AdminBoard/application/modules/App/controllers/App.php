@@ -70,8 +70,8 @@ class App extends OAS_Controller
         $crud->set_table('why_choose_us');
 
         $crud->set_field_upload('featured_image', 'uploads/whyChooseUs');
-        $crud->columns(['title', 'is_active']);
-        $crud->required_fields('title', 'short_description', 'featured_image', 'is_active');
+        $crud->columns(['title', 'status']);
+        $crud->required_fields('title', 'description', 'featured_image', 'status');
 
         $output = $crud->render();
         $this->_example_output($output, $data);

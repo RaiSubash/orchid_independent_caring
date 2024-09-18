@@ -23,8 +23,8 @@
         <div class="container">
             <div class="header-bottominner">
                 <div class="header-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo/logo2.png" alt="dialia logo" />
+                    <a href="{{ route('home') }}">
+                        <img src="{{ getImage('site', siteSetting()->site_logo) }}" alt="site logo" />
                     </a>
                 </div>
                 <nav class="tm-navigation">
@@ -35,12 +35,10 @@
                         <li class="tm-navigation-dropdown">
                             <a href="index.html">Services</a>
                             <ul>
-                                <li><a href="{{ route('service') }}">Service 1</a></li>
-                                <li>
-                                    <a href="index-standard-slider.html">Service 1</a>
-                                </li>
-                                <li><a href="index-ripple-bg.html">Service 1</a></li>
-                                <li><a href="index-video-bg.html">Service 1</a></li>
+                                @foreach (services() as $service)
+                                    <li><a href="{{ route('serviceDetail', $service->slug) }}">{{ $service->title }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li><a href="javascript:">Blogs</a></li>
