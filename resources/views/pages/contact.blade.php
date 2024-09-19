@@ -37,8 +37,7 @@
                             </span>
                             <h5>Our location</h5>
                             <p>
-                                7415 Transcanadienne, Suite 100 St. Laurent, Quebec, Canada
-                                H45T 1Z22
+                                {{ siteSetting()->address }}
                             </p>
                         </div>
                     </div>
@@ -50,12 +49,8 @@
                             <span class="tm-contactblock-backicon">
                                 <i class="flaticon-alarm-clock"></i>
                             </span>
-                            <h5>Our location</h5>
-                            <ul>
-                                <li>Monday - Friday <span>12:00 - 17:00</span></li>
-                                <li>Saturday <span>15:00 - 18:00</span></li>
-                                <li>Sunday <span>Closed</span></li>
-                            </ul>
+                            <h5>Our Email</h5>
+                            <p>{{ siteSetting()->email }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mt-30">
@@ -68,9 +63,7 @@
                             </span>
                             <h5>Our location</h5>
                             <ul>
-                                <li>Phone <span>: 1 800 915 6270</span></li>
-                                <li>Tel <span>: 1 514 733 2010</span></li>
-                                <li>Fax <span>: 1 866 535 1747</span></li>
+                                <li>Phone <span>: {{ siteSetting()->phone_number }}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -80,21 +73,25 @@
                         <form id="tm-contactform"
                             action="https://thememarch.com/demo/html/dialia/dialia/assets/php/mailer.php" method="POST"
                             class="tm-form tm-contact-form">
+                            @csrf
                             <div class="tm-form-inner">
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <input type="text" name="name" required="required" placeholder="Name*" />
+                                    <input type="text" name="name" required="required" placeholder="Name*"
+                                        id="name" />
                                 </div>
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <input type="email" name="email" required="required" placeholder="Email*" />
+                                    <input type="email" name="email" required="required" placeholder="Email*"
+                                        id="email" />
                                 </div>
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <input type="text" name="phone" placeholder="Phone" />
+                                    <input type="text" name="phone" placeholder="Phone" id="phone" />
                                 </div>
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <input type="text" name="subject" required="required" placeholder="Subject*" />
+                                    <input type="text" name="subject" required="required" placeholder="Subject*"
+                                        id="subject" />
                                 </div>
                                 <div class="tm-form-field">
-                                    <textarea name="message" cols="30" rows="5" placeholder="Message"></textarea>
+                                    <textarea name="message" cols="30" rows="5" placeholder="Message" id="message"></textarea>
                                 </div>
                                 <div class="tm-form-field text-center">
                                     <button type="submit" class="tm-button tm-button-dark">
@@ -112,4 +109,49 @@
             <div class="google-map" id="google-map"></div>
         </div>
     </main>
+@endsection
+@section('script')
+    <script>
+        $(function() {
+            $("#tm-contactform").on('submit', function(event) {
+                event.preventDefault()
+                $(".errors").empty()
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('storeEnquiry') }}",
+                    processData: false,
+                    contentType: false,
+                    data: new FormData(this),
+                    success: function(response) {
+                        if (response.status) {
+                            toastr.options.timeOut = 10000;
+                            toastr.success(response.msg);
+                            $("#name").val("")
+                            $("#email").val("")
+                            $("#phone").val("")
+                            $("#subject").val("")
+                            $("#message").val("")
+
+                        } else {
+                            toastr.options = {
+                                "closeButton": true,
+                                "progressBar": true
+                            };
+                            toastr.error(response.msg);
+                            const errors = response.result
+
+                            $.each(errors, function(key, value) {
+                                $('[name="' + key + '"]').addClass('is-invalid').next()
+                                    .html(value[0])
+                            })
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                })
+
+            })
+        })
+    </script>
 @endsection

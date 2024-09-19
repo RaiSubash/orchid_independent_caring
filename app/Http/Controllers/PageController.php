@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\JsonResponse;
+use Exception;
 class PageController extends Controller
 {
     public function index()
@@ -60,4 +62,62 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function storeEnquiry(Request $request) : JsonResponse
+{
+    $response = [
+        'status' => false,
+        "msg" => "Something went wrong!",
+        "result" => []
+    ];
+
+    try {
+
+        $messages = [
+            'name.required' => 'Name is required.',
+            'phone.required' => 'Phone number is required.',
+            'phone.digits' => 'Phone number must be 10 digits.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please provide a valid email address.',
+            'subject.required' => 'Subject is required.',
+            'message.required' => 'Message is required.'
+        ];
+
+        $validate = Validator::make($request->all(),
+            [
+                'name' => 'required|string|max:255',
+                'phone' => 'required|digits:10',
+                'email' => 'required|email',
+                'subject' => 'required',
+                'message' => 'required',
+            ], $messages);
+
+        if ($validate->fails()) {
+            $response['result'] = $validate->errors()->toArray();
+
+            return response()->json([
+                'status' => false,
+                'msg' => $validate->errors()->first(),
+                'result' => $validate->errors()->toArray()
+            ]);
+        }
+
+        DB::table('contact')->insert([
+            'name' => $request->name,
+            'contact_number' => $request->phone,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+
+        $response['status'] = true;
+        $response['msg'] = "We received your inquiry. We will contact you soon";
+
+    } catch (Exception $e) {
+        $response['msg'] = $e->getMessage();
+    }
+
+    return response()->json($response);
+}
+
 }

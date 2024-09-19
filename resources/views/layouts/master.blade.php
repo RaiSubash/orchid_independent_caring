@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/toastr.min.css') }}" />
 </head>
 
 <body>
@@ -33,6 +34,8 @@
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/plugins/toastr.min.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
