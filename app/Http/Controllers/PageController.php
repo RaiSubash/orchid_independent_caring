@@ -56,7 +56,11 @@ class PageController extends Controller
         $service = DB::table('services')
             ->where('slug', $slug)
             ->first();
-        return view('pages.service', compact('service'));
+
+            $otherServices = DB::table('services')
+            ->whereNot('id',$service->id)
+            ->get();
+        return view('pages.service', compact('service','otherServices'));
     }
     public function contact()
     {
@@ -118,6 +122,26 @@ class PageController extends Controller
     }
 
     return response()->json($response);
+}
+
+
+function blogs(){
+    $blogs = DB::table('blogs')
+    ->where('status',1)
+    ->get();
+    return view('pages.blogs',compact('blogs'));
+}
+
+function blogDetail($slug){
+    $detail = DB::table('blogs')
+    ->where('slug',$slug)
+    ->first();
+
+    $otherBlogs = DB::table('blogs')
+    ->whereNot('id',$detail->id)
+    ->get();
+
+    return view('pages.blogDetail',compact('detail','otherBlogs'));
 }
 
 }

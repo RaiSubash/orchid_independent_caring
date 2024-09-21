@@ -335,6 +335,7 @@ class App extends OAS_Controller
         $crud->set_table('services');
 
         $crud->set_field_upload('featured_image', 'uploads/services');
+        $crud->set_field_upload('detail_page_image', 'uploads/services');
         $crud->columns(['title', 'featured_image', 'status']);
         $crud->required_fields('title', 'description', 'featured_image', 'status', 'slug');
 

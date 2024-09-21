@@ -81,7 +81,7 @@
                                         <img src="{{ getImage('services', $service->featured_image) }}">
                                     </span>
                                     <h5>
-                                        <a href="#">{{ $service->title }}</a>
+                                        <a href="{{ route('serviceDetail', $service->slug) }}">{{ $service->title }}</a>
                                     </h5>
                                     <p>{!! $service->description !!}
                                     </p>
@@ -147,10 +147,7 @@
                     <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                         <div class="tm-section-title text-center">
                             <h2>Our Latest Blogs</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius
-                                illum vocent mediocritatem an cule dicta iriure at phaedrum.
-                            </p>
+
                         </div>
                     </div>
                 </div>
@@ -159,7 +156,7 @@
                         <div class="col">
                             <div class="tm-blog">
                                 <div class="tm-blog-top">
-                                    <a href="blog-details.html">
+                                    <a href="{{ route('blogDetail', $blog->slug) }}">
                                         <img src="{{ getImage('blog', $blog->featured_image) }}"
                                             alt="{{ $blog->title }}" />
                                     </a>
@@ -169,9 +166,10 @@
                                 <div class="tm-blog-bottom">
 
                                     <h5 class="tm-blog-title">
-                                        <a href="#">{{ $blog->title }}</a>
+                                        <a href="{{ route('blogDetail', $blog->slug) }}">{{ $blog->title }}</a>
                                     </h5>
-                                    <a href="#" class="tm-button tm-button-dark">Read more</a>
+                                    <a href="{{ route('blogDetail', $blog->slug) }}" class="tm-button tm-button-dark">Read
+                                        more</a>
                                 </div>
                             </div>
                         </div>

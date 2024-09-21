@@ -41,7 +41,7 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <li><a href="javascript:">Blogs</a></li>
+                        <li><a href="{{ route('blogs') }}">Blogs</a></li>
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
                     </ul>
                 </nav>

@@ -4,10 +4,10 @@
         data-black-overlay="4">
         <div class="container">
             <div class="tm-breadcrumb text-center">
-                <h2>Service</h2>
+                <h2>Blog</h2>
                 <ul>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li>{{ $service->title }}</li>
+                    <li>{{ $detail->title }}</li>
                 </ul>
             </div>
         </div>
@@ -21,12 +21,14 @@
                             <div class="tm-blog-list mt-50-reverse">
                                 <div class="tm-blog mt-50">
                                     <div class="tm-blog-top">
-                                        <img src="{{ getImage('services', $service->detail_page_image) }}"
-                                            alt="{{ $service->title }}">
+                                        <img src="{{ getImage('blog', $detail->featured_image) }}"
+                                            alt="{{ $detail->title }}">
+                                        <span
+                                            class="tm-blog-date">{{ \Carbon\Carbon::parse($detail->created_date)->format('d M, Y') }}</span>
                                     </div>
                                     <div class="tm-blog-bottom">
-                                        <h5 class="tm-blog-title">{{ $service->title }}</h5>
-                                        {!! $service->description !!}
+                                        <h5 class="tm-blog-title">{{ $detail->title }}</h5>
+                                        {!! $detail->description !!}
                                     </div>
                                 </div>
                             </div>
@@ -36,10 +38,10 @@
                         <div class="sticky-sidebar">
                             <div class="widgets widgets-blog">
                                 <div class="single-widget widget-categories">
-                                    <h5 class="widget-title">Other Services</h5>
+                                    <h5 class="widget-title">Other Blogs</h5>
                                     <ul>
-                                        @foreach ($otherServices as $other)
-                                            <li><a href="{{ route('serviceDetail', $other->slug) }}">{{ $other->title }}</a>
+                                        @foreach ($otherBlogs as $other)
+                                            <li><a href="{{ route('blogDetail', $other->slug) }}">{{ $other->title }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
