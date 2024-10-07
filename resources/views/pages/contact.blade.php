@@ -1,5 +1,77 @@
 @extends('layouts.master')
 @section('content')
+    <style>
+        /* Section Styling */
+        .contact-steps {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #f7f9fa;
+            /* Light background to match the feel of the page */
+        }
+
+        .contact-steps h2 {
+            font-size: 2.5rem;
+            color: #1d1d1d;
+            margin-bottom: 10px;
+        }
+
+        .contact-steps p {
+            font-size: 1.2rem;
+            color: #7a7a7a;
+            margin-bottom: 40px;
+        }
+
+        /* Container for the steps */
+        .steps-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Each Step */
+        .step {
+            width: 18%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon img {
+            max-width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .step {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .step {
+                width: 100%;
+            }
+        }
+    </style>
     <div class="tm-breadcrumb-area tm-padding-section" data-bgimage="assets/images/bg/breadcrumb-bg.jpg"
         data-black-overlay="4">
         <div class="container">
@@ -19,10 +91,7 @@
                     <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                         <div class="tm-section-title text-center">
                             <h2>How To Find Us</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius
-                                illum vocent mediocritatem an cule dicta iriure at phaedrum.
-                            </p>
+
                         </div>
                     </div>
                 </div>
@@ -32,25 +101,21 @@
                             <span class="tm-contactblock-icon">
                                 <i class="flaticon-placeholder"></i>
                             </span>
-                            <span class="tm-contactblock-backicon">
-                                <i class="flaticon-placeholder"></i>
-                            </span>
                             <h5>Our location</h5>
                             <p>
-                                {{ siteSetting()->address }}
+                                <a href="{{ siteSetting()->map_link }}"> {{ siteSetting()->address }} </a>
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mt-30">
                         <div class="tm-contactblock text-center">
                             <span class="tm-contactblock-icon">
-                                <i class="flaticon-alarm-clock"></i>
-                            </span>
-                            <span class="tm-contactblock-backicon">
-                                <i class="flaticon-alarm-clock"></i>
+                                <img src="{{ asset('assets/envelope.png') }}">
                             </span>
                             <h5>Our Email</h5>
-                            <p>{{ siteSetting()->email }}</p>
+                            <p>
+                                <a href="mailto::{{ siteSetting()->email }}"> {{ siteSetting()->email }}</a>
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mt-30">
@@ -58,21 +123,17 @@
                             <span class="tm-contactblock-icon">
                                 <i class="flaticon-phone"></i>
                             </span>
-                            <span class="tm-contactblock-backicon">
-                                <i class="flaticon-phone"></i>
-                            </span>
-                            <h5>Our location</h5>
-                            <ul>
-                                <li>Phone <span>: {{ siteSetting()->phone_number }}</span></li>
-                            </ul>
+                            <h5>Call Us</h5>
+                            <p>
+                                <a href="tel:{{ siteSetting()->phone_number }}">
+                                    {{ siteSetting()->phone_number }}</a>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mt-50">
                     <div class="col-lg-8">
-                        <form id="tm-contactform"
-                            action="https://thememarch.com/demo/html/dialia/dialia/assets/php/mailer.php" method="POST"
-                            class="tm-form tm-contact-form">
+                        <form id="tm-contactform" method="POST" class="tm-form tm-contact-form">
                             @csrf
                             <div class="tm-form-inner">
                                 <div class="tm-form-field tm-form-fieldhalf">
@@ -105,8 +166,27 @@
                 </div>
             </div>
         </div>
-        <div class="tm-contact-map">
-            <div class="google-map" id="google-map"></div>
+
+        <div class="tm-section contact-us-area bg-white">
+            <div class="container">
+                <section class="contact-steps">
+                    <h2>Getting Started is Easy</h2>
+                    <p>Our team is here to help you get started and find the support you need.</p>
+                    <div class="steps-container">
+                        @foreach ($gettingStarted as $info)
+                            <div class="step">
+                                <div class="icon">
+                                    <img src="{{ getImage('gettingStarted', $info->featured_image) }}"
+                                        alt="{{ $info->title }}">
+                                </div>
+                                <h3>Step {{ $info->step }}</h3>
+                                <p>{{ $info->title }}</p>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
 @endsection

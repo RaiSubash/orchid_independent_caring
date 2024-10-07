@@ -10,6 +10,10 @@
                         <p>
                             {!! $about->description !!}
                         </p>
+                        <h2>{{ $mission->title }}</h2>
+                        <p>
+                            {!! $mission->description !!}
+                        </p>
 
                     </div>
                 </div>
@@ -35,9 +39,8 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="tm-section mission-vision-area bg-white tm-padding-section">
+    {{-- <div class="tm-section mission-vision-area bg-white tm-padding-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 col-12">
@@ -101,5 +104,69 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+    <div class="tm-section mission-vision-area bg-white tm-padding-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-12">
+                    <div class="tm-section-title text-center">
+                        <h2>Why Us</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters justify-content-center">
+                <div class="col-xl-10 col-12">
+                    <div class="tm-missvis">
+                        <div class="tab-content tm-missvis-tabcontent" id="bstab1-ontent">
+                            <div class="tab-pane show active" id="tabone" role="tabpanel" aria-labelledby="bstabone">
+                                <div class="tm-missvis-sectionwrap">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="tm-missvis-image">
+                                                <svg viewBox="0 0 431 335">
+                                                    <defs>
+                                                        <pattern id="attachedImageOne" height="100%" width="100%"
+                                                            patternContentUnits="objectBoundingBox">
+                                                            <image
+                                                                xlink:href="{{ getImage('about', $whyUs->featured_image) }}"
+                                                                preserveAspectRatio="none" width="1" height="1" />
+                                                        </pattern>
+                                                    </defs>
+                                                    <path fill="url(#attachedImage{{ $whyUs->id }})"
+                                                        d="M430.996,174.472 C423.887,83.089 371.892,54.804 300.831,53.617 C298.012,53.570 292.437,53.719 292.437,53.719 C292.437,53.719 239.106,56.279 209.125,28.113 C186.919,10.651 157.335,-0.005 124.848,-0.005 C55.894,-0.005 -0.006,47.991 -0.006,107.199 C-0.006,134.935 12.273,160.197 32.408,179.225 C43.887,190.073 50.185,204.686 50.075,219.886 C50.073,220.143 50.072,220.400 50.072,220.657 C50.072,273.592 89.861,317.864 142.330,326.363 C224.644,346.993 398.469,340.919 429.740,191.379 C430.646,185.967 431.104,180.348 430.996,174.472 Z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="tm-missvis-content">
+                                                {!! $whyUs->description !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tm-section about-us-area bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <div class="about-content about-content-2">
+                        <h2>{{ $areaWeCover->title }}</h2>
+                        <p>
+                            {!! $areaWeCover->description !!}
+
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

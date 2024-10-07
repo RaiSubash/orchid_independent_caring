@@ -43,23 +43,6 @@ class App extends OAS_Controller
         $this->_example_output($output, $data);
     }
 
-    function features()
-    {
-
-        $data['main_title'] = "Features Management";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('features');
-
-        $crud->set_field_upload('featured_image', 'uploads/features');
-        $crud->columns(['title', 'is_active']);
-        $crud->required_fields('title', 'short_description', 'featured_image', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
     function whyChooseUs()
     {
 
@@ -72,23 +55,6 @@ class App extends OAS_Controller
         $crud->set_field_upload('featured_image', 'uploads/whyChooseUs');
         $crud->columns(['title', 'status']);
         $crud->required_fields('title', 'description', 'featured_image', 'status');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-    function homePageDescription()
-    {
-
-        $data['main_title'] = "Home Page Description";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('home_page_description');
-
-        $crud->set_field_upload('featured_image', 'uploads/home');
-        $crud->columns(['title', 'is_active']);
-        $crud->required_fields('title', 'short_description', 'featured_image', 'is_active');
 
         $output = $crud->render();
         $this->_example_output($output, $data);
@@ -115,45 +81,6 @@ class App extends OAS_Controller
         $this->_example_output($output, $data);
     }
 
-    function newsletter()
-    {
-        $data['main_title'] = "Newsletter Management";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('newsletter');
-
-        $crud->columns(['title', 'month', 'is_active']);
-        $crud->required_fields(
-            'title',
-            'file',
-            'month',
-            'is_active'
-        );
-        $crud->set_field_upload('file', 'uploads/newsletters');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-    function notices()
-    {
-        $data['main_title'] = "Notice ";
-        $data['title_small'] = "Setup";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('notices');
-
-        // $crud->columns(['title','is_active']);
-        $crud->columns(['title', 'is_active']);
-        $crud->required_fields('title', 'file', 'created_date', 'is_active');
-        $crud->set_field_upload('file', 'uploads/notices');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-
     function aboutUs()
     {
         $data['main_title'] = "AboutUs Management";
@@ -164,116 +91,16 @@ class App extends OAS_Controller
 
         $crud->set_field_upload('featured_image', 'uploads/about');
 
-        $crud->columns(['title', 'is_active']);
+        $crud->columns(['title', 'status']);
         $crud->required_fields(
             'title',
             'description',
-            'featured_image',
-            'is_active'
+            'status'
         );
 
         $output = $crud->render();
         $this->_example_output($output, $data);
     }
-
-    function managementTeam()
-    {
-        $data['main_title'] = "Management Team";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('management_team');
-
-        $crud->set_field_upload('featured_image', 'uploads/team');
-
-        $crud->columns(['name', 'designation', 'is_active']);
-        $crud->required_fields('name', 'description', 'designation', 'featured_image', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-
-    function ourVision()
-    {
-        $data['main_title'] = "Vision Management";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('our_vision');
-
-        $crud->set_field_upload('featured_image', 'uploads/vision');
-
-        $crud->columns(['title', 'featured_image']);
-        $crud->required_fields(
-            'title',
-            'description',
-            'featured_image',
-            'is_active'
-        );
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-
-    function ourTeam()
-    {
-        $data['main_title'] = "Team  Management";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('our_team');
-
-        $crud->set_field_upload('featured_image', 'uploads/team');
-
-        $crud->columns(['name', 'featured_image']);
-        $crud->required_fields(
-            'name',
-            'position',
-            'featured_image',
-            'description',
-            'is_active'
-        );
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-    function galleryCategory()
-    {
-        $data['main_title'] = "Gallery Category";
-        $data['title_small'] = "Setup";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('gallery_category');
-
-        $crud->columns(['title', 'is_active']);
-        $crud->required_fields('title', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-
-    function gallery()
-    {
-        $data['main_title'] = "Gallery Setup";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('gallery');
-
-        $crud->set_field_upload('featured_image', 'uploads/gallery');
-        $crud->set_relation('category_id', 'gallery_category', 'title');
-
-        $crud->columns(['featured_image', 'is_active']);
-        $crud->required_fields('featured_image', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
 
     function testimonials()
     {
@@ -292,37 +119,7 @@ class App extends OAS_Controller
         $this->_example_output($output, $data);
     }
 
-    function faqs()
-    {
 
-        $data['main_title'] = "FAQs Setup";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('faqs');
-
-        $crud->columns(['question', 'is_active']);
-        $crud->required_fields('question', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-    function serviceCategory()
-    {
-
-        $data['main_title'] = "Service Category";
-        $data['title_small'] = "Management";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('service_category');
-
-        $crud->columns(['title', 'is_active']);
-        $crud->required_fields('title', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
 
 
     function services()
@@ -338,25 +135,6 @@ class App extends OAS_Controller
         $crud->set_field_upload('detail_page_image', 'uploads/services');
         $crud->columns(['title', 'featured_image', 'status']);
         $crud->required_fields('title', 'description', 'featured_image', 'status', 'slug');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
-    function service_gallery()
-    {
-
-        $data['main_title'] = "Service Gallery Management";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('service_gallery');
-
-        $crud->set_field_upload('featured_image', 'uploads/services');
-        $crud->columns(['featured_image', 'is_active']);
-        $crud->required_fields('featured_image', 'service_id', 'is_active');
-
-        $crud->set_relation('service_id', 'services', 'title');
 
         $output = $crud->render();
         $this->_example_output($output, $data);
@@ -422,24 +200,6 @@ class App extends OAS_Controller
         $this->_example_output($output, $data);
     }
 
-
-    function welcomeSection()
-    {
-        $data['main_title'] = "Welcome Section Setup";
-        $data['title_small'] = "";
-        $crud = new grocery_CRUD();
-
-        $crud->set_table('welcome_section');
-
-        $crud->set_field_upload('featured_image', 'uploads/home');
-
-        $crud->columns(['featured_image', 'is_active']);
-        $crud->required_fields('title', 'description', 'featured_image', 'is_active');
-
-        $output = $crud->render();
-        $this->_example_output($output, $data);
-    }
-
     function userManagement()
     {
         $data['main_title'] = "User";
@@ -482,11 +242,45 @@ class App extends OAS_Controller
         $this->_example_output($output, $data);
     }
 
+    function gettingStarted()
+    {
+        $data['main_title'] = "Getting Started";
+        $data['title_small'] = "Management";
+        $crud = new grocery_CRUD();
+
+        $crud->set_table('getting_started');
+
+        $crud->set_field_upload('featured_image', 'uploads/gettingStarted');
+
+        $crud->columns(['title', 'status']);
+        $crud->required_fields(
+            'title',
+            'featured_image',
+            'step',
+            'status'
+        );
+
+        $output = $crud->render();
+        $this->_example_output($output, $data);
+    }
 
 
+    function contactInbox()
+    {
+        $data['main_title'] = "Contact";
+        $data['title_small'] = "Inbox";
+        $crud = new grocery_CRUD();
 
+        $crud->set_table('contact');
 
+        $crud->columns(['name', 'email', 'contact_number']);
+        $crud->unset_add();
+        $crud->unset_clone();
+        $crud->unset_edit();
 
+        $output = $crud->render();
+        $this->_example_output($output, $data);
+    }
 
     function upload()
     {

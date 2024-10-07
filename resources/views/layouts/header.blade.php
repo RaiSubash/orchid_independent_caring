@@ -42,6 +42,7 @@
                             </ul>
                         </li>
                         <li><a href="{{ route('blogs') }}">Blogs</a></li>
+                        <li><a href="{{ route('career') }}">Career</a></li>
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
                     </ul>
                 </nav>
