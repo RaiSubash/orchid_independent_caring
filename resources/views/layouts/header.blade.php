@@ -7,11 +7,11 @@
                         <ul>
                             <li>
                                 Email us :
-                                <a href="#">orchid.independentcaring@gmail.com </a>
+                                <a href="mailto:{{ siteSetting()->email }}">{{ siteSetting()->email }}</a>
                             </li>
                             <li>
                                 Call us :
-                                <a href="tel://+1-800-915-6270">0421332823</a>
+                                <a href="tel:{{ siteSetting()->phone_number }}">{{ siteSetting()->phone_number }}</a>
                             </li>
                         </ul>
                     </div>
