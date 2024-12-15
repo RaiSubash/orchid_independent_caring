@@ -60,7 +60,6 @@ class PageController extends Controller
             ->where('status', 1)
             ->get();
 
-        // dd($whyChooseUs);
 
         return view('pages.about', compact('about', 'whyChooseUs', 'mission', 'whyUs', 'areaWeCover'));
     }
@@ -181,5 +180,14 @@ class PageController extends Controller
             ->where('slug', 'why-work-with-us')
             ->first();
         return view('pages.career', compact('joinOurTeam', 'whyWorkWithUs'));
+    }
+
+    function privacyPolicy()
+    {
+        $privacyPolicy = DB::table('privacy_policy')
+            ->where('status', 1)
+            ->first();
+
+        return view('pages.privacy', compact('privacyPolicy'));
     }
 }

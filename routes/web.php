@@ -20,5 +20,6 @@ Route::get('/service-detail/{slug}', [PageController::class, 'serviceDetail'])->
 Route::get('/blogs', [PageController::class, 'blogs'])->name('blogs');
 Route::get('/blog-detail/{slug}', [PageController::class, 'blogDetail'])->name('blogDetail');
 Route::get('/career', [PageController::class, 'career'])->name('career');
+Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacyPolicy');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/store-contact-enquiry', [PageController::class, 'storeEnquiry'])->name('storeEnquiry');

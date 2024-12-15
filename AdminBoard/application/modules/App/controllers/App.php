@@ -227,17 +227,16 @@ class App extends OAS_Controller
     }
 
 
-    function socialSites()
+    function privacyPolicy()
     {
-        $data['main_title'] = "Social Sites";
-        $data['title_small'] = "social sites management";
+        $data['main_title'] = "Privacy Policy";
+        $data['title_small'] = "Management";
 
         $crud = new grocery_CRUD();
-        $crud->set_table('social_sites');
+        $crud->set_table('privacy_policy');
 
-        $crud->columns(['featured_link', 'is_active']);
-        $crud->required_fields('featured_link', 'featured_image', 'is_active');
-        $crud->set_field_upload('featured_image', 'uploads/site');
+        $crud->columns(['title', 'status']);
+        $crud->required_fields('title', 'description', 'status');
         $output = $crud->render();
         $this->_example_output($output, $data);
     }
