@@ -83,7 +83,7 @@
                                     <h5>
                                         <a href="{{ route('serviceDetail', $service->slug) }}">{{ $service->title }}</a>
                                     </h5>
-                                    <p>{!! $service->description !!}
+                                    <p>{!! $service->short_description !!}
                                     </p>
                                 </div>
                             </div>
