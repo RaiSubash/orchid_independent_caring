@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>{{siteSetting()->site_name}}</title>
+    <title>{{ siteSetting()->site_name }}</title>
     <meta name="description"
         content="Orchid Independent caring Pty Ltd acknowledge the Traditional owners and custodians of Country throughout Australia and acknowledges their continuing connection to land, sea and community. We pay our respects to the Elders past, present and emerging." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

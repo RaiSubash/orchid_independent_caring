@@ -33,7 +33,7 @@
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('about') }}">About Us</a></li>
                         <li class="tm-navigation-dropdown">
-                            <a href="index.html">Services</a>
+                            <a href="">Services</a>
                             <ul>
                                 @foreach (services() as $service)
                                     <li><a href="{{ route('serviceDetail', $service->slug) }}">{{ $service->title }}</a>

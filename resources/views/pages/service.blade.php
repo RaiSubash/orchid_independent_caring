@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="sticky-sidebar">
-                            <div class="tm-blog-list mt-50-reverse">
+                            <div class="tm-blog-list">
                                 <div class="tm-blog mt-50">
                                     <div class="tm-blog-top">
                                         <img src="{{ getImage('services', $service->detail_page_image) }}"
