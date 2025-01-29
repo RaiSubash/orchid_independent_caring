@@ -17,35 +17,31 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="sticky-sidebar">
-                            <div class="tm-blog-list">
-                                <div class="tm-blog mt-50">
-                                    <div class="tm-blog-top">
-                                        <img src="{{ getImage('services', $service->detail_page_image) }}"
-                                            alt="{{ $service->title }}">
-                                    </div>
-                                    <div class="tm-blog-bottom">
-                                        <h5 class="tm-blog-title">{{ $service->title }}</h5>
-                                        {!! $service->description !!}
-                                    </div>
+                        <div class="tm-blog-list">
+                            <div class="tm-blog mt-50">
+                                <div class="tm-blog-top">
+                                    <img src="{{ getImage('services', $service->detail_page_image) }}"
+                                        alt="{{ $service->title }}">
+                                </div>
+                                <div class="tm-blog-bottom">
+                                    <h5 class="tm-blog-title">{{ $service->title }}</h5>
+                                    {!! $service->description !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="sticky-sidebar">
-                            <div class="widgets widgets-blog">
-                                <div class="single-widget widget-categories">
-                                    <h5 class="widget-title">Other Services</h5>
-                                    <ul>
-                                        @foreach ($otherServices as $other)
-                                            <li><a href="{{ route('serviceDetail', $other->slug) }}">{{ $other->title }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-
+                        <div class="widgets widgets-blog">
+                            <div class="single-widget widget-categories">
+                                <h5 class="widget-title">Other Services</h5>
+                                <ul>
+                                    @foreach ($otherServices as $other)
+                                        <li><a href="{{ route('serviceDetail', $other->slug) }}">{{ $other->title }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
+
                         </div>
                     </div>
                 </div>
