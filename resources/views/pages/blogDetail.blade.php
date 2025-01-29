@@ -17,36 +17,30 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="sticky-sidebar">
-                            <div class="tm-blog-list mt-50-reverse">
-                                <div class="tm-blog mt-50">
-                                    <div class="tm-blog-top">
-                                        <img src="{{ getImage('blog', $detail->featured_image) }}"
-                                            alt="{{ $detail->title }}">
-                                        <span
-                                            class="tm-blog-date">{{ \Carbon\Carbon::parse($detail->created_date)->format('d M, Y') }}</span>
-                                    </div>
-                                    <div class="tm-blog-bottom">
-                                        <h5 class="tm-blog-title">{{ $detail->title }}</h5>
-                                        {!! $detail->description !!}
-                                    </div>
+                        <div class="tm-blog-list mt-50-reverse">
+                            <div class="tm-blog mt-50">
+                                <div class="tm-blog-top">
+                                    <img src="{{ getImage('blog', $detail->featured_image) }}" alt="{{ $detail->title }}">
+                                    <span
+                                        class="tm-blog-date">{{ \Carbon\Carbon::parse($detail->created_date)->format('d M, Y') }}</span>
+                                </div>
+                                <div class="tm-blog-bottom">
+                                    <h5 class="tm-blog-title">{{ $detail->title }}</h5>
+                                    {!! $detail->description !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="sticky-sidebar">
-                            <div class="widgets widgets-blog">
-                                <div class="single-widget widget-categories">
-                                    <h5 class="widget-title">Other Blogs</h5>
-                                    <ul>
-                                        @foreach ($otherBlogs as $other)
-                                            <li><a href="{{ route('blogDetail', $other->slug) }}">{{ $other->title }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-
+                        <div class="widgets widgets-blog">
+                            <div class="single-widget widget-categories">
+                                <h5 class="widget-title">Other Blogs</h5>
+                                <ul>
+                                    @foreach ($otherBlogs as $other)
+                                        <li><a href="{{ route('blogDetail', $other->slug) }}">{{ $other->title }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
