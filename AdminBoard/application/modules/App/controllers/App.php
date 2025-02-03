@@ -90,11 +90,15 @@ class App extends OAS_Controller
         $crud->set_table('about_us');
 
         $crud->set_field_upload('featured_image', 'uploads/about');
+        $crud->set_field_upload('featured_image_2', 'uploads/about');
+        $crud->set_field_upload('featured_image_3', 'uploads/about');
+        $crud->set_field_upload('featured_image_4', 'uploads/about');
 
         $crud->columns(['title', 'status']);
         $crud->required_fields(
             'title',
             'description',
+            'featured_image',
             'status'
         );
 

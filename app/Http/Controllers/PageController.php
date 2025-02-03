@@ -37,31 +37,15 @@ class PageController extends Controller
         return view('index', compact('sliders', 'about', 'services', 'testimonials', 'blogs'));
     }
 
-    public function about()
+    public function about($slug)
     {
         $about = DB::table('about_us')
             ->where('status', 1)
-            ->where('slug', 'who-we-are')
-            ->first();
-        $mission = DB::table('about_us')
-            ->where('status', 1)
-            ->where('slug', 'mission')
-            ->first();
-        $whyUs = DB::table('about_us')
-            ->where('status', 1)
-            ->where('slug', 'why-us')
-            ->first();
-        $areaWeCover = DB::table('about_us')
-            ->where('status', 1)
-            ->where('slug', 'area-we-cover')
+            ->where('slug', $slug)
             ->first();
 
-        $whyChooseUs = DB::table('why_choose_us')
-            ->where('status', 1)
-            ->get();
 
-
-        return view('pages.about', compact('about', 'whyChooseUs', 'mission', 'whyUs', 'areaWeCover'));
+        return view('pages.about', compact('about'));
     }
 
     public function serviceDetail($slug)

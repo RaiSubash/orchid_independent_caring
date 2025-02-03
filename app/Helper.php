@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\DB;
 function getImage($folder, $file)
 {
 
-    // return "http://localhost:8002/uploads/$folder/$file";
-    return "https://orchidindependentcaring.com.au/AdminBoard/uploads/$folder/$file";
+    return "http://localhost:8002/uploads/$folder/$file";
+    // return "https://orchidindependentcaring.com.au/AdminBoard/uploads/$folder/$file";
 }
 
 function siteSetting()
@@ -17,5 +17,10 @@ function siteSetting()
 function services()
 {
     return DB::table('services')->where('status', 1)
+        ->get();
+}
+function about()
+{
+    return DB::table('about_us')->where('status', 1)
         ->get();
 }

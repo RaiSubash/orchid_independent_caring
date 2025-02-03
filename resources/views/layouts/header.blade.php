@@ -31,12 +31,21 @@
                     <ul>
 
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('about') }}">About Us</a></li>
+                        <li class="tm-navigation-dropdown">
+                            <a href="">About Us</a>
+                            <ul>
+                                @foreach (about() as $info)
+                                    <li><a href="{{ route('about', $info->slug) }}">{{ $info->title }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                         <li class="tm-navigation-dropdown">
                             <a href="">Services</a>
                             <ul>
                                 @foreach (services() as $service)
-                                    <li><a href="{{ route('serviceDetail', $service->slug) }}">{{ $service->title }}</a>
+                                    <li><a
+                                            href="{{ route('serviceDetail', $service->slug) }}">{{ $service->title }}</a>
                                     </li>
                                 @endforeach
                             </ul>

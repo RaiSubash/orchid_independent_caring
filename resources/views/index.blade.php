@@ -33,7 +33,7 @@
                                 {!! $about->description !!}
                             </p>
                             <div class="about-contentbottom">
-                                <a href="{{ route('about') }}" class="tm-button">Read more</a>
+                                <a href="{{ route('about','who-we-are') }}" class="tm-button">Read more</a>
                                 </a>
                             </div>
                         </div>
