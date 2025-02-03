@@ -214,7 +214,7 @@
                             <div class="col-sm-12">
                                 <div class="text-sm-right d-none d-sm-block">
                                     Copyright © <?= date('Y') ?>. Designed and Developed by <a href="https://orchidindependentcaring.com.au/"
-                                        target="_blank">Orchid Independent Caring,</a> All rights reserved.
+                                        target="_blank">Orchid Independent Caring.</a> All rights reserved.
                                 </div>
                             </div>
                         </div>
