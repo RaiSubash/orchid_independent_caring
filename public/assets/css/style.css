@@ -2635,7 +2635,7 @@ button.tm-videobutton:hover span {
     font-size: 36px;
     line-height: 42px;
     margin-bottom: 10px;
-    color: #ffffff;
+    color: #98c454;
 }
 
 .tm-breadcrumb ul {
@@ -2648,7 +2648,7 @@ button.tm-videobutton:hover span {
     list-style: none;
     display: inline-block;
     font-size: 16px;
-    color: #ffffff;
+    color: #000;
 }
 
 .tm-breadcrumb ul li::after {
@@ -2661,7 +2661,7 @@ button.tm-videobutton:hover span {
 }
 
 .tm-breadcrumb ul li a {
-    color: #ffffff;
+    color: #000;
 }
 
 .tm-breadcrumb ul li a:hover {

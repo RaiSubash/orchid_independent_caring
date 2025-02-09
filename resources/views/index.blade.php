@@ -33,7 +33,7 @@
                                 {!! $about->description !!}
                             </p>
                             <div class="about-contentbottom">
-                                <a href="{{ route('about','who-we-are') }}" class="tm-button">Read more</a>
+                                <a href="{{ route('about', 'who-we-are') }}" class="tm-button">Read more</a>
                                 </a>
                             </div>
                         </div>
@@ -94,89 +94,95 @@
             </div>
         </div>
 
-        <div class="tm-section testimonial-area tm-padding-section bg-grey">
-            <div class="bg-animated-shape">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8 col-md-10 col-12">
-                        <div class="tm-section-title text-center">
-                            <h2>What Our Customers Say</h2>
-                        </div>
-                    </div>
+        @if (!$testimonials->isEmpty())
+            <div class="tm-section testimonial-area tm-padding-section bg-grey">
+                <div class="bg-animated-shape">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="testimonial-slider-active tm-slider-arrow-2">
-                    @foreach ($testimonials as $testimonial)
-                        <div class="tm-testimonial-slideritem">
-                            <div class="tm-testimonial">
-                                <div class="tm-testimonial-author">
-                                    <div class="tm-testimonial-authorimage">
-                                        <img src="{{ getImage('testimonial', $testimonial->featured_image) }}"
-                                            alt="{{ $testimonial->name }}" />
-                                    </div>
-                                    <div class="tm-testimonial-authorinfo">
-                                        <h5>{{ $testimonial->name }}</h5>
-                                        <h6>{{ $testimonial->designation }}</h6>
-                                    </div>
-                                </div>
-                                <div class="tm-testimonial-content">
-                                    <p>
-                                        {!! $testimonial->message !!}
-                                    </p>
-                                </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-7 col-lg-8 col-md-10 col-12">
+                            <div class="tm-section-title text-center">
+                                <h2>What Our Customers Say</h2>
                             </div>
                         </div>
-                    @endforeach
-
-                </div>
-            </div>
-        </div>
-
-        <div class="tm-section latest-blog-area tm-padding-section bg-white">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-8 col-md-10 col-12">
-                        <div class="tm-section-title text-center">
-                            <h2>Our Latest Blogs</h2>
-
-                        </div>
                     </div>
-                </div>
-                <div class="row blog-slider-active tm-slider-dots">
-                    @foreach ($blogs as $blog)
-                        <div class="col">
-                            <div class="tm-blog">
-                                <div class="tm-blog-top">
-                                    <a href="{{ route('blogDetail', $blog->slug) }}">
-                                        <img src="{{ getImage('blog', $blog->featured_image) }}"
-                                            alt="{{ $blog->title }}" />
-                                    </a>
-                                    <span
-                                        class="tm-blog-date">{{ \Carbon\Carbon::parse($blog->created_date)->format('d M, Y') }}</span>
-                                </div>
-                                <div class="tm-blog-bottom">
-
-                                    <h5 class="tm-blog-title">
-                                        <a href="{{ route('blogDetail', $blog->slug) }}">{{ $blog->title }}</a>
-                                    </h5>
-                                    <a href="{{ route('blogDetail', $blog->slug) }}" class="tm-button tm-button-dark">Read
-                                        more</a>
+                    <div class="testimonial-slider-active tm-slider-arrow-2">
+                        @foreach ($testimonials as $testimonial)
+                            <div class="tm-testimonial-slideritem">
+                                <div class="tm-testimonial">
+                                    <div class="tm-testimonial-author">
+                                        <div class="tm-testimonial-authorimage">
+                                            <img src="{{ getImage('testimonial', $testimonial->featured_image) }}"
+                                                alt="{{ $testimonial->name }}" />
+                                        </div>
+                                        <div class="tm-testimonial-authorinfo">
+                                            <h5>{{ $testimonial->name }}</h5>
+                                            <h6>{{ $testimonial->designation }}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="tm-testimonial-content">
+                                        <p>
+                                            {!! $testimonial->message !!}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
 
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
+
+
+        @if (!$blogs->isEmpty())
+            <div class="tm-section latest-blog-area tm-padding-section bg-white">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-lg-8 col-md-10 col-12">
+                            <div class="tm-section-title text-center">
+                                <h2>Our Latest Blogs</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row blog-slider-active tm-slider-dots">
+                        @foreach ($blogs as $blog)
+                            <div class="col">
+                                <div class="tm-blog">
+                                    <div class="tm-blog-top">
+                                        <a href="{{ route('blogDetail', $blog->slug) }}">
+                                            <img src="{{ getImage('blog', $blog->featured_image) }}"
+                                                alt="{{ $blog->title }}" />
+                                        </a>
+                                        <span
+                                            class="tm-blog-date">{{ \Carbon\Carbon::parse($blog->created_date)->format('d M, Y') }}</span>
+                                    </div>
+                                    <div class="tm-blog-bottom">
+
+                                        <h5 class="tm-blog-title">
+                                            <a href="{{ route('blogDetail', $blog->slug) }}">{{ $blog->title }}</a>
+                                        </h5>
+                                        <a href="{{ route('blogDetail', $blog->slug) }}"
+                                            class="tm-button tm-button-dark">Read
+                                            more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        @endif
     </main>
 @endsection

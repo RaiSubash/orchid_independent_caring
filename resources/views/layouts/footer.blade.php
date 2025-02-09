@@ -4,8 +4,8 @@
             <div class="row widgets footer-widgets">
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-widget widget-quicklinks">
-                        <h5 class="widget-title">About Orchid Independent Caring</h5>
-                        <p>{!! siteSetting()->footer_text !!}</p>
+                        <h5 class="widget-title">{{ siteSetting()->footer_title }}</h5>
+                        <img src="{{ getImage('site', siteSetting()->footer_image) }}">
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                     <div class="single-widget widget-quicklinks">
                         <h5 class="widget-title">Quick Links</h5>
                         <ul>
-                            <li><a href="{{ route('about','who-we-are') }}">About</a></li>
+                            <li><a href="{{ route('about', 'who-we-are') }}">About</a></li>
                             <li><a href="{{ route('blogs') }}">Blogs</a></li>
                             <li><a href="{{ siteSetting()->NDIS_link }}" target="_blank">NDIS Code of Conduct</a></li>
                             <li><a href="{{ route('privacyPolicy') }}">Privacy Policy</a></li>

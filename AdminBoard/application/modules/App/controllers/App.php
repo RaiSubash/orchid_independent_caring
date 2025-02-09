@@ -194,6 +194,7 @@ class App extends OAS_Controller
         $crud->set_table('site_setting');
         $crud->set_field_upload('site_logo', 'uploads/site');
         $crud->set_field_upload('favicon', 'uploads/site');
+        $crud->set_field_upload('footer_image', 'uploads/site');
 
         $crud->unset_back_to_list();
         $crud->columns(['site_name', 'email_address']);
