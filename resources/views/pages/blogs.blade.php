@@ -15,9 +15,9 @@
     <main class="main-content">
         <div class="tm-section blogs-area bg-whtie tm-padding-section">
             <div class="container">
-                <div class="row tm-blog-list blog-masonry-active mt-50-reverse">
+                <div class="row tm-blog-list mt-50-reverse">
                     @foreach ($blogs as $blog)
-                        <div class="col-lg-4 col-md-6 col-12 blog-masonry-item">
+                        <div class="col-lg-4 col-md-6 col-12">
                             <div class="tm-blog mt-50">
                                 <div class="tm-blog-top">
                                     <a href="{{ route('blogDetail', $blog->slug) }}">
