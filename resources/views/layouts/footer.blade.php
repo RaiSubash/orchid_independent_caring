@@ -5,8 +5,9 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-widget widget-quicklinks">
                         <h5 class="widget-title">{{ siteSetting()->footer_title }}</h5>
-                        <img src="{{ getImage('site', siteSetting()->footer_image) }}" style="max-width: 80%">
                         <p>{!! siteSetting()->footer_text !!}</p>
+
+                        <img src="{{ getImage('site', siteSetting()->footer_image) }}" style="max-width: 80%">
                     </div>
                 </div>
 
